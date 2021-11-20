@@ -1,11 +1,11 @@
+###########################################
+#  01  平日較多夜間停留人數的區域           #
+###########################################
+
 library(readr)
 library(tidyverse)
 
 demo <- read.csv("2020Nov_district.csv")
-
-###########################################
-#  01  平日較多夜間停留人數的區域           #
-###########################################
 
 subset1 <- demo %>%
   filter(NIGHT_WORK >= NIGHT_WEEKEND) %>%
@@ -19,8 +19,7 @@ plot1 <- ggplot(
   aes( y = COUNTY))+
   geom_bar( fill = "cyan3",
             width = 0.5,
-            position = position_dodge(0.4)
-  )+
+            position = position_dodge(0.4))+
   geom_text(stat = "count",
             aes(label = (..count..)),
             vjust = -0.1, #input$vjust
